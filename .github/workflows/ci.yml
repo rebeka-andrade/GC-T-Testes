@@ -21,4 +21,4 @@ jobs:
           cache: maven
 
       - name: Build e Testes com Maven
-        run: mvn -B test # Executa todos os testes (incluindo Mockito/JUnit)
+        run: mvn -B test -Dsurefire.printSummary=true
