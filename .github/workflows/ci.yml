@@ -1,0 +1,24 @@
+name: Java CI com Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4 # Baixa seu código na máquina virtual
+
+      - name: Configurar JDK 17 # Mude para a versão que você usa
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build e Testes com Maven
+        run: mvn -B test # Executa todos os testes (incluindo Mockito/JUnit)
