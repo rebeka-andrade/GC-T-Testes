@@ -17,19 +17,17 @@ public class UsuarioService {
 
     public void login(String email, String senha) {
 
-        Optional<Usuario> usuarioOptional =
-            usuarioReporitorio.buscarPorEmail(email);
+        Optional<Usuario> usuarioOptional = usuarioReporitorio.buscarPorEmail(email);
 
-    if (usuarioOptional.isEmpty()) {
-        throw new RuntimeException("Usuário não encontrado");
-    }
+        if (usuarioOptional.isEmpty()) {
+            throw new RuntimeException("Login incorreto, tente novamente");
+        }
 
-    Usuario usuario = usuarioOptional.get();
+        Usuario usuario = usuarioOptional.get();
 
-    if (!usuario.getSenha().equals(senha)) {
-        throw new RuntimeException("Senha inválida, tente novamente");
-    }
-        
+        if (!usuario.getSenha().equals(senha)) {
+            throw new RuntimeException("Senha inválida, tente novamente");
+        }
     }
 
 }
