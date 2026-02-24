@@ -60,4 +60,17 @@ public class UsuarioTest {
         assertEquals("Senha inválida, tente novamente", exception.getMessage());
     }
 
+    @Test
+    public void testeLoginInvalido() {
+
+        when(usuarioReporitorio.buscarPorEmail("clarice@gmail.com"))
+                .thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> usuarioService.login("clarice@gmail.com", "123456@f"));
+
+        assertEquals("Login incorreto, tente novamente", exception.getMessage());
+    }
+
 }
