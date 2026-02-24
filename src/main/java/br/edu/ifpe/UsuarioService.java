@@ -17,7 +17,7 @@ public class UsuarioService {
 
     public void login(String email, String senha) {
 
-        if (email == null || !email.contains("@")) {
+       if (email == null || !email.contains("@")) {
             throw new RuntimeException("e-mail inválido");
         }
 
