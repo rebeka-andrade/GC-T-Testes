@@ -4,7 +4,7 @@ public class UsuarioService {
 
     private UsuarioReporitorio usuarioReporitorio;
 
-    public UsuarioService( UsuarioReporitorio repo) {
+    public UsuarioService(UsuarioReporitorio repo) {
         this.usuarioReporitorio = repo;
     }
 
@@ -12,4 +12,9 @@ public class UsuarioService {
 
         this.usuarioReporitorio.inserir(usuario);
     }
+
+    public void login(String email, String senha) {
+        
+    }
+
 }

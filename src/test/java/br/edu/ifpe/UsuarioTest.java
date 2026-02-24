@@ -7,8 +7,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class UsuarioTest {
@@ -27,6 +32,8 @@ public class UsuarioTest {
                 .nome("Vilmar")
                 .idade(10)
                 .cpf("11111111111")
+                .email("vilmar@gmail.com")
+                .senha("123456@f")
                 .build();
     }
 
@@ -37,7 +44,20 @@ public class UsuarioTest {
 
         this.usuarioService.cadastrar(this.usuario);
 
-        verify(this.usuarioReporitorio, times(2)).inserir(this.usuario);
+        verify(this.usuarioReporitorio, times(1)).inserir(this.usuario);
+    }
+
+    @Test
+    public void testeLoginSenhaInvalida() {
+
+        when(usuarioReporitorio.buscarPorEmail("vilmar@gmail.com"))
+                .thenReturn(Optional.of(usuario));
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> usuarioService.login("vilmar@gmail.com", "0000000"));
+
+        assertEquals("Senha inválida, tente novamente", exception.getMessage());
     }
 
 }
