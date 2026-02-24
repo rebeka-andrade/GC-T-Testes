@@ -73,4 +73,14 @@ public class UsuarioTest {
         assertEquals("Login incorreto, tente novamente", exception.getMessage());
     }
 
+    @Test
+    public void testeEmailInvalido() {
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> usuarioService.login("vilmargmail.com", "123456@f"));
+
+        assertEquals("e-mail inválido", exception.getMessage());
+    }
+
 }
