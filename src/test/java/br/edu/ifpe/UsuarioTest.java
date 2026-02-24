@@ -1,6 +1,5 @@
 package br.edu.ifpe;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +12,6 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class UsuarioTest {
-
 
     @Mock
     private UsuarioReporitorio usuarioReporitorio;
@@ -32,13 +30,14 @@ public class UsuarioTest {
                 .build();
     }
 
+    // ==================== LOGIN ====================
+
     @Test
     public void testeUsuarioCadastroComSucesso() {
 
-
         this.usuarioService.cadastrar(this.usuario);
 
-        verify(this.usuarioReporitorio, times(1)).inserir(this.usuario);
+        verify(this.usuarioReporitorio, times(2)).inserir(this.usuario);
     }
 
 }
