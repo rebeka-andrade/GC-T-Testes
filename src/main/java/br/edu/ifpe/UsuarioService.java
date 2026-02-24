@@ -17,6 +17,10 @@ public class UsuarioService {
 
     public void login(String email, String senha) {
 
+        if (email == null || !email.contains("@")) {
+            throw new RuntimeException("e-mail inválido");
+        }
+
         Optional<Usuario> usuarioOptional = usuarioReporitorio.buscarPorEmail(email);
 
         if (usuarioOptional.isEmpty()) {
