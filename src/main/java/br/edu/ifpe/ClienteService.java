@@ -25,4 +25,14 @@ public class ClienteService {
         clienteRepositorio.atualizar(cliente);
     }
 
+    public void login(String email, String senha) {
+
+        Cliente cliente = clienteRepositorio.buscarPorEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado!"));
+
+        if (!cliente.getSenha().equals(senha)) {
+            throw new IllegalArgumentException("Senha inválida!");
+        }
+    }
+
 }

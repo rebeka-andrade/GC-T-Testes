@@ -34,6 +34,7 @@ public class ClienteTest {
                 .dataNascimento("12/06/2006")
                 .cpf("144.657.893-67")
                 .email("rebeka@gmail.com")
+                .senha("123456@f")
                 .build();
     }
 
@@ -84,6 +85,18 @@ public class ClienteTest {
 
         verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
         verify(clienteRepositorio, times(0)).atualizar(cliente);
+    }
+
+    @Test
+    public void testeLoginComSucesso() {
+
+        when(clienteRepositorio.buscarPorEmail("rebeka@gmail.com"))
+                .thenReturn(Optional.of(cliente));
+
+        clienteService.login("rebeka@gmail.com", "123456@f");
+
+        verify(clienteRepositorio, times(1))
+                .buscarPorEmail("rebeka@gmail.com");
     }
 
 }

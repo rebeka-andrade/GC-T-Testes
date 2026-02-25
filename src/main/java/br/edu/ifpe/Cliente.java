@@ -12,5 +12,6 @@ public class Cliente {
     private String dataNascimento;
     private String cpf;
     private String email;
+    private String senha;
 
 }
