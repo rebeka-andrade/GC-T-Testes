@@ -32,7 +32,7 @@ public class ClienteTest {
                 .codigo(33)
                 .nome("Rebeka")
                 .dataNascimento("12/06/2006")
-                .cpf("144.657.893.67")
+                .cpf("123")
                 .email("rebeka@gmail.com")
                 .build();
     }
@@ -43,6 +43,19 @@ public class ClienteTest {
         this.clienteService.cadastrar(this.cliente);
 
         verify(this.clienteRepositorio, times(1)).inserir(this.cliente);
+    }
+
+    @Test
+    public void testeVerificarCPFCadastro() {
+
+        when(clienteRepositorio.buscarPorCPF("144.657.893-67"))
+                .thenReturn(Optional.of(cliente));
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> clienteService.cadastrar(cliente));
+
+        assertEquals("CPF já cadastrado!", exception.getMessage());
     }
 
 }

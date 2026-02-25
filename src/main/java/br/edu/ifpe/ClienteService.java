@@ -10,6 +10,10 @@ public class ClienteService {
 
     public void cadastrar(Cliente cliente) {
 
+        if (clienteRepositorio.buscarPorCPF(cliente.getCpf()).isPresent()) {
+            throw new RuntimeException("CPF já cadastrado!");
+        }
+
         this.clienteRepositorio.inserir(cliente);
     }
 
