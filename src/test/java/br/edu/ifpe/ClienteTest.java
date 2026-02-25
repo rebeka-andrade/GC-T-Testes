@@ -58,4 +58,9 @@ public class ClienteTest {
         assertEquals("CPF já cadastrado!", exception.getMessage());
     }
 
+    @Test
+    public void testeAtualizarPerfilClienteSistema() {
+        
+    }
+
 }

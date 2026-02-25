@@ -37,8 +37,6 @@ public class UsuarioTest {
                 .build();
     }
 
-    // ==================== LOGIN ====================
-
     @Test
     public void testeUsuarioCadastroComSucesso() {
 
