@@ -199,4 +199,25 @@ public class ClienteTest {
                 .atualizar(cliente);
     }
 
+    @Test
+    public void testeRegistrarCondicaoSaudeComSucesso() {
+
+        CondicaoSaude condicao = CondicaoSaude.builder()
+                .pressaoCorporal("12x8")
+                .temperaturaCorporal("36,5")
+                .sintomas("Dor de cabeça")
+                .build();
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        clienteService.registrarCondicaoSaude(33, condicao);
+
+        verify(clienteRepositorio, times(1))
+                .buscarPorCodigo(33);
+
+        verify(clienteRepositorio, times(1))
+                .atualizar(cliente);
+    }
+
 }

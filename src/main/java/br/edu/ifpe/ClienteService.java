@@ -69,4 +69,21 @@ public class ClienteService {
 
     }
 
+    public void registrarCondicaoSaude(Integer codigoCliente, CondicaoSaude condicao) {
+
+        Cliente cliente = clienteRepositorio.buscarPorCodigo(codigoCliente)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado!"));
+
+        if (condicao.getPressaoCorporal() == null || condicao.getPressaoCorporal().isBlank()) {
+            throw new IllegalArgumentException("Pressão corporal obrigatória!");
+        }
+
+        if (condicao.getTemperaturaCorporal() == null || condicao.getTemperaturaCorporal().isBlank()) {
+            throw new IllegalArgumentException("Temperatura corporal obrigatória!");
+        }
+
+        cliente.adicionarCondicaoSaude(condicao);
+
+        clienteRepositorio.atualizar(cliente);
+    }
 }

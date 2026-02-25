@@ -23,7 +23,15 @@ public class Cliente {
 
     @Builder.Default
     private List<PlanoSaude> planosSaude = new ArrayList<>();
+
+    @Builder.Default
+    private List<CondicaoSaude> condicoesSaude = new ArrayList<>();
+
     public void adicionarPlanoSaude(PlanoSaude plano) {
         this.planosSaude.add(plano);
+    }
+
+    public void adicionarCondicaoSaude(CondicaoSaude condicao) {
+        this.condicoesSaude.add(condicao);
     }
 }
