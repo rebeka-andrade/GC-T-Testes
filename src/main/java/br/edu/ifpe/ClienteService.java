@@ -19,8 +19,7 @@ public class ClienteService {
 
     public void atualizar(Cliente cliente) {
 
-        Cliente clienteExistente = clienteRepositorio
-                .buscarPorCodigo(cliente.getCodigo())
+        clienteRepositorio.buscarPorCodigo(cliente.getCodigo())
                 .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado!"));
 
         clienteRepositorio.atualizar(cliente);
