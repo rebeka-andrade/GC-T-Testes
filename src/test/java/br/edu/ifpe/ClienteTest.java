@@ -32,7 +32,7 @@ public class ClienteTest {
                 .codigo(33)
                 .nome("Rebeka")
                 .dataNascimento("12/06/2006")
-                .cpf("123")
+                .cpf("144.657.893-67")
                 .email("rebeka@gmail.com")
                 .build();
     }
