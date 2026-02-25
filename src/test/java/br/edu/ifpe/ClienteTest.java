@@ -93,7 +93,7 @@ public class ClienteTest {
         when(clienteRepositorio.buscarPorEmail("rebeka@gmail.com"))
                 .thenReturn(Optional.of(cliente));
 
-        clienteService.login("rebekagmail.com", "123456@f");
+        clienteService.login("rebeka@gmail.com", "123456@f");
 
         verify(clienteRepositorio, times(1))
                 .buscarPorEmail("rebeka@gmail.com");
