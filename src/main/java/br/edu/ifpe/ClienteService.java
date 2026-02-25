@@ -36,6 +36,13 @@ public class ClienteService {
     }
 
     public void cadastrarDependente(Cliente dependente, Integer tutorId) {
+
+        Cliente tutor = clienteRepositorio.buscarPorCodigo(tutorId)
+                .orElseThrow(() -> new IllegalArgumentException("Tutor não encontrado!"));
+
+        dependente.setTutor(tutor);
+
+        clienteRepositorio.inserir(dependente);
     }
 
 }

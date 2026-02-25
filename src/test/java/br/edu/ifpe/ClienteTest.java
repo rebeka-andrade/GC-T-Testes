@@ -36,10 +36,9 @@ public class ClienteTest {
                 .cpf("144.657.893-67")
                 .email("rebeka@gmail.com")
                 .senha("123456@f")
-                .tutor(tutor)
                 .build();
 
-                Cliente tutor = Cliente.builder()
+        tutor = Cliente.builder()
                 .codigo(1)
                 .nome("Clarice")
                 .build();
