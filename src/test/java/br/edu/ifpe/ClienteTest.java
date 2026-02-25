@@ -106,7 +106,7 @@ public class ClienteTest {
     }
 
     @Test
-    public void cadastrarMenorComoDependenteComSucesso() {
+    public void TestecadastrarMenorComoDependenteComSucesso() {
 
         when(clienteRepositorio.buscarPorCodigo(1))
                 .thenReturn(Optional.of(tutor));
@@ -115,5 +115,19 @@ public class ClienteTest {
 
         verify(clienteRepositorio, times(1)).buscarPorCodigo(1);
         verify(clienteRepositorio, times(1)).inserir(cliente);
+    }
+
+    @Test
+    public void TestecadastroClienteRealizadoSucesso() {
+        when(clienteRepositorio.buscarPorCPF("144.657.893-67"))
+                .thenReturn(Optional.empty());
+
+        this.clienteService.cadastrar(this.cliente);
+
+        verify(clienteRepositorio, times(1))
+                .buscarPorCPF("144.657.893-67");
+
+        verify(clienteRepositorio, times(1))
+                .inserir(cliente);
     }
 }

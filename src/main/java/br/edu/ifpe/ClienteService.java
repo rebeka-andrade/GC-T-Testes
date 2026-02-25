@@ -10,6 +10,10 @@ public class ClienteService {
 
     public void cadastrar(Cliente cliente) {
 
+        if (cliente.getNome() == null || cliente.getNome().isBlank()) {
+            throw new IllegalArgumentException("Nome obrigatório!");
+        }
+
         if (clienteRepositorio.buscarPorCPF(cliente.getCpf()).isPresent()) {
             throw new RuntimeException("CPF já cadastrado!");
         }
