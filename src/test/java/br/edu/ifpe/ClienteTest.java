@@ -69,5 +69,21 @@ public class ClienteTest {
         verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
         verify(clienteRepositorio, times(1)).atualizar(cliente);
     }
-    
+
+    @Test
+    public void testeAtualizarClienteInexistente() {
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.empty());
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> clienteService.atualizar(cliente));
+
+        assertEquals("Cliente não encontrado!", exception.getMessage());
+
+        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(clienteRepositorio, times(0)).atualizar(cliente);
+    }
+
 }
