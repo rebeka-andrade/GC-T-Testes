@@ -2,10 +2,10 @@ package br.edu.ifpe;
 
 public class FuncionarioService {
 
-    private FuncionarioRepositorio FuncionarioRepositorio;
+    private FuncionarioRepositorio funcionarioRepositorio;
 
-    public FuncionarioService(FuncionarioReporitorio repo) {
-        this.funcionarioReporitorio = repo;
+    public FuncionarioService(FuncionarioRepositorio repo) {
+        this.funcionarioRepositorio = repo;
     }
 
     public void cadastrar(Funcionario funcionario) {

@@ -1,5 +1,6 @@
 package br.edu.ifpe;
 
-public class FuncionarioRepositorio {
+public interface FuncionarioRepositorio {
+
      void inserir(Funcionario funcionario);
 }

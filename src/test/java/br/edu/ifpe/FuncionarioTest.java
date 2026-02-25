@@ -7,11 +7,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class FuncionarioTest {
@@ -24,7 +21,7 @@ public class FuncionarioTest {
 
     private Funcionario funcionario;
 
-     @BeforeEach
+    @BeforeEach
     public void configurar() {
         funcionario = Funcionario.builder()
                 .codigo(22)
@@ -40,6 +37,6 @@ public class FuncionarioTest {
 
         this.funcionarioService.cadastrar(this.funcionario);
 
-        verify(funcionarioRepositorio, times(1)).inserir(this.funcionario);
+        verify(this.funcionarioRepositorio, times(1)).inserir(this.funcionario);
     }
 }
