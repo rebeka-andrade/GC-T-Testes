@@ -26,6 +26,7 @@ public class ClienteTest {
 
     private Cliente cliente;
     private Cliente tutor;
+    private PlanoSaude plano;
 
     @BeforeEach
     public void configurar() {
@@ -41,6 +42,11 @@ public class ClienteTest {
         tutor = Cliente.builder()
                 .codigo(1)
                 .nome("Clarice")
+                .build();
+
+        plano = PlanoSaude.builder()
+                .nomePlano("Unimed")
+                .validade("12/2027")
                 .build();
     }
 
@@ -130,4 +136,20 @@ public class ClienteTest {
         verify(clienteRepositorio, times(1))
                 .inserir(cliente);
     }
+
+    @Test
+    public void testePlanoSaudeValido() {
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        clienteService.cadastrarPlanoSaude(33, plano);
+
+        verify(clienteRepositorio, times(1))
+                .buscarPorCodigo(33);
+
+        verify(clienteRepositorio, times(1))
+                .atualizar(cliente);
+    }
+
 }

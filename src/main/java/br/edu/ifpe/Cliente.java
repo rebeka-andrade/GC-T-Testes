@@ -17,4 +17,5 @@ public class Cliente {
     private String senha;
 
     private Cliente tutor;
+    private PlanoSaude planoSaude;
 }

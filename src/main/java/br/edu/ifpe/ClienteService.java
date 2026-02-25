@@ -1,5 +1,8 @@
 package br.edu.ifpe;
 
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
 public class ClienteService {
 
     private ClienteRepositorio clienteRepositorio;
@@ -49,4 +52,21 @@ public class ClienteService {
         clienteRepositorio.inserir(dependente);
     }
 
+    public void cadastrarPlanoSaude(Integer codigoCliente, PlanoSaude plano) {
+
+        Cliente cliente = clienteRepositorio.buscarPorCodigo(codigoCliente)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado!"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
+        YearMonth validade = YearMonth.parse(plano.getValidade(), formatter);
+
+        if (validade.isBefore(YearMonth.now())) {
+            throw new IllegalArgumentException("Plano de saúde vencido!");
+        }
+
+        cliente.setPlanoSaude(plano);
+
+        clienteRepositorio.atualizar(cliente);
+
+    }
 }
