@@ -71,7 +71,7 @@ public class ClienteTest {
         when(clienteRepositorio.buscarPorCodigo(33))
                 .thenReturn(Optional.of(cliente));
 
-        clienteService.atualizar(cliente);
+        this.clienteService.atualizar(this.cliente);
 
         verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
         verify(clienteRepositorio, times(1)).atualizar(cliente);
