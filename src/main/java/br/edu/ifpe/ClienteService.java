@@ -64,8 +64,9 @@ public class ClienteService {
             throw new IllegalArgumentException("Plano de saúde vencido!");
         }
 
-        cliente.setPlanoSaude(plano);
+        cliente.adicionarPlanoSaude(plano);
         clienteRepositorio.atualizar(cliente);
 
     }
+
 }

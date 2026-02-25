@@ -173,4 +173,30 @@ public class ClienteTest {
         verify(clienteRepositorio, times(0)).atualizar(cliente);
     }
 
+    @Test
+    public void testeCadastrarMultiplosPlanosSaude() {
+
+        PlanoSaude plano1 = PlanoSaude.builder()
+                .nomePlano("Unimed")
+                .validade("12/2027")
+                .build();
+
+        PlanoSaude plano2 = PlanoSaude.builder()
+                .nomePlano("Amil")
+                .validade("05/2026")
+                .build();
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        clienteService.cadastrarPlanoSaude(33, plano1);
+        clienteService.cadastrarPlanoSaude(33, plano2);
+
+        verify(clienteRepositorio, times(2))
+                .buscarPorCodigo(33);
+
+        verify(clienteRepositorio, times(2))
+                .atualizar(cliente);
+    }
+
 }

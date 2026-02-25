@@ -1,5 +1,8 @@
 package br.edu.ifpe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Cliente {
-    
+
     private Integer codigo;
     private String nome;
     private String dataNascimento;
@@ -17,5 +20,10 @@ public class Cliente {
     private String senha;
 
     private Cliente tutor;
-    private PlanoSaude planoSaude;
+
+    @Builder.Default
+    private List<PlanoSaude> planosSaude = new ArrayList<>();
+    public void adicionarPlanoSaude(PlanoSaude plano) {
+        this.planosSaude.add(plano);
+    }
 }
