@@ -167,7 +167,7 @@ public class ClienteTest {
                 IllegalArgumentException.class,
                 () -> clienteService.cadastrarPlanoSaude(33, planoInvalido));
 
-        assertEquals("Carteira de saúde vencida!", exception.getMessage());
+        assertEquals("Plano de saúde vencido!", exception.getMessage());
 
         verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
         verify(clienteRepositorio, times(0)).atualizar(cliente);

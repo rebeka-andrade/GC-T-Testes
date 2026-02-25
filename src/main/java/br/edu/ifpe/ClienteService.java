@@ -65,7 +65,6 @@ public class ClienteService {
         }
 
         cliente.setPlanoSaude(plano);
-
         clienteRepositorio.atualizar(cliente);
 
     }
