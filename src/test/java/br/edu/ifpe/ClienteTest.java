@@ -60,7 +60,14 @@ public class ClienteTest {
 
     @Test
     public void testeAtualizarPerfilClienteSistema() {
-        
-    }
 
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        clienteService.atualizar(cliente);
+
+        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(clienteRepositorio, times(1)).atualizar(cliente);
+    }
+    
 }

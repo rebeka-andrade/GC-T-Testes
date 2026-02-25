@@ -17,4 +17,13 @@ public class ClienteService {
         this.clienteRepositorio.inserir(cliente);
     }
 
+    public void atualizar(Cliente cliente) {
+
+        Cliente clienteExistente = clienteRepositorio
+                .buscarPorCodigo(cliente.getCodigo())
+                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado!"));
+
+        clienteRepositorio.atualizar(cliente);
+    }
+
 }

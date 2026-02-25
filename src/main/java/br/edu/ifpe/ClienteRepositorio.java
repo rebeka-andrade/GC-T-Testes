@@ -10,4 +10,8 @@ public interface ClienteRepositorio {
 
     Optional<Cliente> buscarPorCPF(String cpf);
 
+    Optional<Cliente> buscarPorCodigo(Integer codigo);
+
+    void atualizar(Cliente cliente);
+
 }
