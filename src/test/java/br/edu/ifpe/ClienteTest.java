@@ -152,4 +152,25 @@ public class ClienteTest {
                 .atualizar(cliente);
     }
 
+    @Test
+    public void testePlanoSaudeInvalido() {
+
+        PlanoSaude planoInvalido = PlanoSaude.builder()
+                .nomePlano("Unimed")
+                .validade("12/2025")
+                .build();
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> clienteService.cadastrarPlanoSaude(33, planoInvalido));
+
+        assertEquals("Carteira de saúde vencida!", exception.getMessage());
+
+        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(clienteRepositorio, times(0)).atualizar(cliente);
+    }
+
 }
