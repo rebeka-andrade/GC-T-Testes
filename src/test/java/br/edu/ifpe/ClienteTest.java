@@ -25,16 +25,23 @@ public class ClienteTest {
     private ClienteService clienteService;
 
     private Cliente cliente;
+    private Cliente tutor;
 
     @BeforeEach
     public void configurar() {
         cliente = Cliente.builder()
                 .codigo(33)
                 .nome("Rebeka")
-                .dataNascimento("12/06/2006")
+                .dataNascimento("12/06/2010")
                 .cpf("144.657.893-67")
                 .email("rebeka@gmail.com")
                 .senha("123456@f")
+                .tutor(tutor)
+                .build();
+
+                Cliente tutor = Cliente.builder()
+                .codigo(1)
+                .nome("Clarice")
                 .build();
     }
 
@@ -99,4 +106,15 @@ public class ClienteTest {
                 .buscarPorEmail("rebeka@gmail.com");
     }
 
+    @Test
+    public void cadastrarMenorComoDependenteComSucesso() {
+
+        when(clienteRepositorio.buscarPorCodigo(1))
+                .thenReturn(Optional.of(tutor));
+
+        clienteService.cadastrarDependente(cliente, 1);
+
+        verify(clienteRepositorio, times(1)).buscarPorCodigo(1);
+        verify(clienteRepositorio, times(1)).inserir(cliente);
+    }
 }

@@ -35,4 +35,7 @@ public class ClienteService {
         }
     }
 
+    public void cadastrarDependente(Cliente dependente, Integer tutorId) {
+    }
+
 }
