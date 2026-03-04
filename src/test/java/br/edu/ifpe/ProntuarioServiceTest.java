@@ -37,5 +37,20 @@ public class ProntuarioServiceTest {
         assertNotNull(sugestao);
         assertFalse(sugestao.isBlank());
     }
+
+    @Test
+    void deveAcionarDorAIAoFinalizarProntuario() {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setSintomas("Dor no peito");
+        prontuario.setDiagnostico("Pressão elevada");
+
+        ProntuarioService service = new ProntuarioService();
+
+        String sugestao = service.finalizarProntuario(prontuario);
+
+        assertNotNull(sugestao);
+        assertTrue(sugestao.contains("Sugestão DorAI"));
+    }
 }
 
