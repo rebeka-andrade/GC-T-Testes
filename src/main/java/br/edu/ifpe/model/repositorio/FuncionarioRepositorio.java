@@ -1,4 +1,6 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.repositorio;
+
+import br.edu.ifpe.model.entity.Funcionario;
 
 public interface FuncionarioRepositorio {
 

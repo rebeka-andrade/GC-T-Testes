@@ -1,4 +1,4 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;

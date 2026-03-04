@@ -1,6 +1,10 @@
 package br.edu.ifpe;
 
 import org.junit.jupiter.api.Test;
+
+import br.edu.ifpe.model.entity.Prontuario;
+import br.edu.ifpe.model.service.ProntuarioService;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProntuarioServiceTest {

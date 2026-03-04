@@ -7,6 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import br.edu.ifpe.model.entity.Funcionario;
+import br.edu.ifpe.model.repositorio.FuncionarioRepositorio;
+import br.edu.ifpe.model.service.FuncionarioService;
+
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 

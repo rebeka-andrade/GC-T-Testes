@@ -1,4 +1,4 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.service;
 
 public class FinanceiroService {
 

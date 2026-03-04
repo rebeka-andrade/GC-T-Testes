@@ -1,4 +1,6 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.service;
+
+import br.edu.ifpe.model.entity.Prontuario;
 
 public class ProntuarioService {
 

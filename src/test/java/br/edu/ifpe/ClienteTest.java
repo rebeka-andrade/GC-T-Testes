@@ -1,11 +1,18 @@
 package br.edu.ifpe;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import br.edu.ifpe.model.entity.Cliente;
+import br.edu.ifpe.model.entity.CondicaoSaude;
+import br.edu.ifpe.model.entity.PlanoSaude;
+import br.edu.ifpe.model.repositorio.ClienteRepositorio;
+import br.edu.ifpe.model.service.ClienteService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -105,8 +112,9 @@ public class ClienteTest {
         when(clienteRepositorio.buscarPorEmail("rebeka@gmail.com"))
                 .thenReturn(Optional.of(cliente));
 
-        clienteService.login("rebeka@gmail.com", "123456@f");
+        boolean ret = clienteService.login("rebeka@gmail.com", "123456@f");
 
+        Assertions.assertTrue(ret);
         verify(this.clienteRepositorio, times(1))
                 .buscarPorEmail("rebeka@gmail.com");
     }

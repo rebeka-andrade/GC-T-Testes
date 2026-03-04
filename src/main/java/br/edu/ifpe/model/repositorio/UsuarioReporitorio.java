@@ -1,6 +1,8 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.repositorio;
 
 import java.util.Optional;
+
+import br.edu.ifpe.model.entity.Usuario;
 
 public interface UsuarioReporitorio {
 

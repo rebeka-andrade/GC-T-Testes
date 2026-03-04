@@ -1,7 +1,10 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.service;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import br.edu.ifpe.model.entity.Usuario;
+import br.edu.ifpe.model.repositorio.UsuarioReporitorio;
 
 public class UsuarioService {
 

@@ -8,6 +8,15 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.edu.ifpe.model.entity.Atendimento;
+import br.edu.ifpe.model.entity.Cliente;
+import br.edu.ifpe.model.entity.PlanoSaude;
+import br.edu.ifpe.model.entity.Prontuario;
+import br.edu.ifpe.model.repositorio.AtendimentoRepositorio;
+import br.edu.ifpe.model.repositorio.ClienteRepositorio;
+import br.edu.ifpe.model.repositorio.PlanoSaudeRepositorio;
+import br.edu.ifpe.model.service.AtendimentoService;
+
 public class AtendimentoServiceTest {
 
     private AtendimentoRepositorio atendimentoRepositorio;

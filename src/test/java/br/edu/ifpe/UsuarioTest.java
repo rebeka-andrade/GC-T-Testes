@@ -7,6 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import br.edu.ifpe.model.entity.Usuario;
+import br.edu.ifpe.model.repositorio.UsuarioReporitorio;
+import br.edu.ifpe.model.service.UsuarioService;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;

@@ -1,8 +1,13 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.service;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import br.edu.ifpe.model.entity.Cliente;
+import br.edu.ifpe.model.entity.CondicaoSaude;
+import br.edu.ifpe.model.entity.PlanoSaude;
+import br.edu.ifpe.model.repositorio.ClienteRepositorio;
 
 public class ClienteService {
 
@@ -33,7 +38,7 @@ public class ClienteService {
         clienteRepositorio.atualizar(cliente);
     }
 
-    public void login(String email, String senha) {
+    public boolean login(String email, String senha) {
 
         Cliente cliente = clienteRepositorio.buscarPorEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado!"));
@@ -41,6 +46,8 @@ public class ClienteService {
         if (!cliente.getSenha().equals(senha)) {
             throw new IllegalArgumentException("Senha inválida!");
         }
+
+        return true;
     }
 
     public void cadastrarDependente(Cliente dependente, Integer tutorId) {

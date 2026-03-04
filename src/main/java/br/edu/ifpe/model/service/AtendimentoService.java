@@ -1,4 +1,10 @@
-package br.edu.ifpe;
+package br.edu.ifpe.model.service;
+
+import br.edu.ifpe.model.entity.Atendimento;
+import br.edu.ifpe.model.entity.Prontuario;
+import br.edu.ifpe.model.repositorio.AtendimentoRepositorio;
+import br.edu.ifpe.model.repositorio.ClienteRepositorio;
+import br.edu.ifpe.model.repositorio.PlanoSaudeRepositorio;
 
 public class AtendimentoService {
 
