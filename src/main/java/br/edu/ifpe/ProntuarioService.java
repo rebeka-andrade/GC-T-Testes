@@ -20,7 +20,6 @@ public class ProntuarioService {
             throw new IllegalArgumentException("Prontuário sem informações suficientes!");
         }
 
-        // Simulação da IA DorAI
         return "Sugestão DorAI: Possível caso de hipertensão. Avaliar pressão arterial.";
     }
 
@@ -29,9 +28,6 @@ public class ProntuarioService {
         if (prontuario == null) {
             throw new IllegalArgumentException("Prontuário obrigatório!");
         }
-
-        // Aqui simulamos que o registro foi finalizado
-        // e automaticamente chamamos a DorAI
 
         return submeterParaDorAI(prontuario);
     }
