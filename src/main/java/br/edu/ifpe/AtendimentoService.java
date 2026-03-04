@@ -41,4 +41,22 @@ public class AtendimentoService {
 
         atendimento.setProntuario(prontuario);
     }
+
+    public void registrarProntuarioCompleto(
+            Atendimento atendimento,
+            String antecedentesClinicos,
+            String antecedentesFamiliares,
+            String sintomas,
+            String diagnostico,
+            String dataAtendimento) {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setAntecedentesClinicos(antecedentesClinicos);
+        prontuario.setAntecedentesFamiliares(antecedentesFamiliares);
+        prontuario.setSintomas(sintomas);
+        prontuario.setDiagnostico(diagnostico);
+        prontuario.setDataAtendimento(dataAtendimento);
+
+        atendimento.setProntuario(prontuario);
+    }
 }
