@@ -22,5 +22,20 @@ public class ProntuarioServiceTest {
         assertEquals("Uso de analgésico por 5 dias", prontuario.getPrescricao());
         assertEquals("Dipirona", prontuario.getMedicamentos());
     }
+
+    @Test
+    void deveSubmeterProntuarioParaDorAIComSucesso() {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setSintomas("Dor no peito");
+        prontuario.setDiagnostico("Pressão elevada");
+
+        ProntuarioService service = new ProntuarioService();
+
+        String sugestao = service.submeterParaDorAI(prontuario);
+
+        assertNotNull(sugestao);
+        assertFalse(sugestao.isBlank());
+    }
 }
 
