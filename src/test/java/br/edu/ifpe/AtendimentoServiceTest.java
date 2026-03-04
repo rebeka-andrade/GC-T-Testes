@@ -87,4 +87,28 @@ public class AtendimentoServiceTest {
         verify(atendimentoRepositorio, times(1))
                 .salvar(atendimentoEmergencial);
     }
+
+    @Test
+    public void testeArmazenarPrescricaoEMedicamentosComSucesso() {
+
+        when(clienteRepositorio.buscarPorCodigo(2))
+                .thenReturn(Optional.of(cliente));
+
+        when(planoRepositorio.buscarPorCodigo(1))
+                .thenReturn(Optional.of(plano));
+
+        atendimentoService.registrarAtendimento(atendimento);
+
+        atendimentoService.registrarProntuario(
+                atendimento,
+                "Repouso e uso de analgésico",
+                "Dipirona"
+        );
+
+        assertEquals("Repouso e uso de analgésico",
+                atendimento.getProntuario().getPrescricao());
+
+        assertEquals("Dipirona",
+                atendimento.getProntuario().getMedicamentos());
+    }
 }
