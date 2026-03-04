@@ -53,4 +53,16 @@ public class ProntuarioService {
 
         return financeiro.cobrarPlano();
     }
+
+    public String realizarAtendimentoEmergencial(Prontuario prontuario) {
+
+        if (prontuario == null) {
+            throw new IllegalArgumentException("Prontuário obrigatório!");
+        }
+
+        FinanceiroService financeiro = new FinanceiroService();
+
+        return financeiro.cobrarPlano();
+    }
+
 }
