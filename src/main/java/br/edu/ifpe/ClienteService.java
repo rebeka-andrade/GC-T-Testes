@@ -90,6 +90,10 @@ public class ClienteService {
     }
 
     public List<CondicaoSaude> listarCondicoesSaude(Integer codigoCliente) {
-        throw new UnsupportedOperationException("Método não implementado ainda");
+
+        Cliente cliente = clienteRepositorio.buscarPorCodigo(codigoCliente)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado!"));
+
+        return cliente.getCondicoesSaude();
     }
 }
