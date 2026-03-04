@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class PlanoSaude {
 
+    private Integer codigo;
     private String nomePlano;
     private String validade;
 }

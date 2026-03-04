@@ -33,11 +33,18 @@ public class AtendimentoServiceTest {
                 planoRepositorio
         );
 
-        cliente = new Cliente();
-        cliente.setCodigo(2);
+        cliente = Cliente.builder()
+                .codigo(2)
+                .nome("Clarice")
+                .cpf("123.321.123-45")
+                .email("clarice@gmail.com")
+                .build();
 
-        plano = new PlanoSaude();
-        plano.setCodigo(1);
+        plano = PlanoSaude.builder()
+                .codigo(1)
+                .nomePlano("Nimed")
+                .validade("17/07/2027")
+                .build();
 
         atendimento = new Atendimento();
         atendimento.setCliente(cliente);
