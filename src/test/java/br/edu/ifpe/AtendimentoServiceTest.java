@@ -65,4 +65,26 @@ public class AtendimentoServiceTest {
         verify(atendimentoRepositorio, times(1))
                 .salvar(atendimento);
     }
+
+    @Test
+    public void testeRegistrarAtendimentoEmergencialComSucesso() {
+
+        Atendimento atendimentoEmergencial = new Atendimento();
+        atendimentoEmergencial.setCliente(cliente);
+        atendimentoEmergencial.setPlano(plano);
+        atendimentoEmergencial.setTipo("EMERGENCIAL");
+        atendimentoEmergencial.setMedico("Junior");
+        atendimentoEmergencial.setAcompanhante("Lucicleide");
+
+        when(clienteRepositorio.buscarPorCodigo(2))
+                .thenReturn(Optional.of(cliente));
+
+        when(planoRepositorio.buscarPorCodigo(1))
+                .thenReturn(Optional.of(plano));
+
+        atendimentoService.registrarAtendimento(atendimentoEmergencial);
+
+        verify(atendimentoRepositorio, times(1))
+                .salvar(atendimentoEmergencial);
+    }
 }
