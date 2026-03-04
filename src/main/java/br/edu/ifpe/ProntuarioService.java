@@ -42,4 +42,15 @@ public class ProntuarioService {
 
         return dorAI.processar(prontuario);
     }
+
+    public String realizarAtendimentoAmbulatorial(Prontuario prontuario) {
+
+        if (prontuario == null) {
+            throw new IllegalArgumentException("Prontuário obrigatório!");
+        }
+
+        FinanceiroService financeiro = new FinanceiroService();
+
+        return financeiro.cobrarPlano();
+    }
 }
