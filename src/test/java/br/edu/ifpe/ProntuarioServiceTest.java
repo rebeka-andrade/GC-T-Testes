@@ -82,5 +82,20 @@ public class ProntuarioServiceTest {
         assertNotNull(resultado);
         assertTrue(resultado.contains("Plano de saúde cobrado"));
     }
+
+    @Test
+    void deveRealizarAtendimentoEmergencialECobrarPlano() {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setSintomas("Dor intensa");
+        prontuario.setDiagnostico("Possível infarto");
+
+        ProntuarioService service = new ProntuarioService();
+
+        String resultado = service.realizarAtendimentoEmergencial(prontuario);
+
+        assertNotNull(resultado);
+        assertTrue(resultado.contains("Plano de saúde cobrado"));
+    }
 }
 
