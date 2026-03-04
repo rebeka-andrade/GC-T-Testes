@@ -23,4 +23,16 @@ public class ProntuarioService {
         // Simulação da IA DorAI
         return "Sugestão DorAI: Possível caso de hipertensão. Avaliar pressão arterial.";
     }
+
+    public String finalizarProntuario(Prontuario prontuario) {
+
+        if (prontuario == null) {
+            throw new IllegalArgumentException("Prontuário obrigatório!");
+        }
+
+        // Aqui simulamos que o registro foi finalizado
+        // e automaticamente chamamos a DorAI
+
+        return submeterParaDorAI(prontuario);
+    }
 }
