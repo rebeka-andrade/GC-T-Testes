@@ -2,6 +2,8 @@ package br.edu.ifpe;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 
 public class ClienteService {
 
@@ -85,5 +87,9 @@ public class ClienteService {
         cliente.adicionarCondicaoSaude(condicao);
 
         clienteRepositorio.atualizar(cliente);
+    }
+
+    public List<CondicaoSaude> listarCondicoesSaude(Integer codigoCliente) {
+        throw new UnsupportedOperationException("Método não implementado ainda");
     }
 }

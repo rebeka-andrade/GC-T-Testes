@@ -220,4 +220,33 @@ public class ClienteTest {
                 .atualizar(cliente);
     }
 
+    @Test
+    public void testeListarTodosRegistrosCondicaoSaude() {
+
+        CondicaoSaude condicao1 = CondicaoSaude.builder()
+                .pressaoCorporal("12x8")
+                .temperaturaCorporal("36,5")
+                .sintomas("Dor de cabeça")
+                .build();
+
+        CondicaoSaude condicao2 = CondicaoSaude.builder()
+                .pressaoCorporal("13x9")
+                .temperaturaCorporal("37,0")
+                .sintomas("Febre")
+                .build();
+
+        cliente.adicionarCondicaoSaude(condicao1);
+        cliente.adicionarCondicaoSaude(condicao2);
+
+        when(clienteRepositorio.buscarPorCodigo(33))
+                .thenReturn(Optional.of(cliente));
+
+        var lista = clienteService.listarCondicoesSaude(33);
+
+        assertEquals(2, lista.size());
+
+        verify(clienteRepositorio, times(1))
+                .buscarPorCodigo(33);
+    }
+
 }
