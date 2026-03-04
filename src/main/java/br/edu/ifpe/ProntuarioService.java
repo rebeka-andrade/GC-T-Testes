@@ -9,4 +9,18 @@ public class ProntuarioService {
         prontuario.setPrescricao(prescricao);
         prontuario.setMedicamentos(medicamentos);
     }
+
+    public String submeterParaDorAI(Prontuario prontuario) {
+
+        if (prontuario == null) {
+            throw new IllegalArgumentException("Prontuário obrigatório!");
+        }
+
+        if (prontuario.getSintomas() == null || prontuario.getSintomas().isBlank()) {
+            throw new IllegalArgumentException("Prontuário sem informações suficientes!");
+        }
+
+        // Simulação da IA DorAI
+        return "Sugestão DorAI: Possível caso de hipertensão. Avaliar pressão arterial.";
+    }
 }
