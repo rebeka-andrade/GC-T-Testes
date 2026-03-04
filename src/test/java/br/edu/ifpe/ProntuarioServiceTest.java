@@ -92,17 +92,12 @@ public class ProntuarioServiceTest {
 
         ProntuarioService service = new ProntuarioService();
 
-        double valorAtendimento = 500.0;
-        double valorMedicamentos = 200.0;
-
         String resultado = service.realizarAtendimentoEmergencial(
-                prontuario,
-                valorAtendimento,
-                valorMedicamentos
+                prontuario
         );
 
         assertEquals(
-                "Plano cobrado com sucesso. Total: 700.0",
+                "Plano de saúde cobrado com sucesso. Total: R$ 200.0",
                 resultado
         );
     }

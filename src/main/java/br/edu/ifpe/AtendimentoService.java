@@ -1,7 +1,5 @@
 package br.edu.ifpe;
 
-import java.util.Optional;
-
 public class AtendimentoService {
 
     private AtendimentoRepositorio atendimentoRepositorio;

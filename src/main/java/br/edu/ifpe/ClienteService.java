@@ -3,7 +3,6 @@ package br.edu.ifpe;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 public class ClienteService {
 
@@ -20,7 +19,7 @@ public class ClienteService {
         }
 
         if (clienteRepositorio.buscarPorCPF(cliente.getCpf()).isPresent()) {
-            throw new RuntimeException("CPF já cadastrado!");
+            throw new IllegalArgumentException("CPF já cadastrado!");
         }
 
         this.clienteRepositorio.inserir(cliente);

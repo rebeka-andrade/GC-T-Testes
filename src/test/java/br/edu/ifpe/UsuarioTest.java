@@ -13,6 +13,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -51,11 +52,14 @@ public class UsuarioTest {
         when(usuarioReporitorio.buscarPorEmail("vilmar@gmail.com"))
                 .thenReturn(Optional.of(usuario));
 
-        RuntimeException exception = assertThrows(
-                RuntimeException.class,
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
                 () -> usuarioService.login("vilmar@gmail.com", "0000000"));
 
         assertEquals("Senha inválida, tente novamente", exception.getMessage());
+
+        verify(usuarioReporitorio, times(1))
+                .buscarPorEmail("vilmar@gmail.com");
     }
 
     @Test
@@ -64,21 +68,27 @@ public class UsuarioTest {
         when(usuarioReporitorio.buscarPorEmail("clarice@gmail.com"))
                 .thenReturn(Optional.empty());
 
-        RuntimeException exception = assertThrows(
-                RuntimeException.class,
+        NoSuchElementException exception = assertThrows(
+                NoSuchElementException.class,
                 () -> usuarioService.login("clarice@gmail.com", "123456@f"));
 
         assertEquals("Login incorreto, tente novamente", exception.getMessage());
+
+        verify(usuarioReporitorio, times(1))
+                .buscarPorEmail("clarice@gmail.com");
     }
 
     @Test
     public void testeEmailInvalido() {
 
-        RuntimeException exception = assertThrows(
-                RuntimeException.class,
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
                 () -> usuarioService.login("vilmargmail.com", "123456@f"));
 
         assertEquals("e-mail inválido", exception.getMessage());
+
+        verify(usuarioReporitorio, times(0))
+                .buscarPorEmail("vilmargmail.com");
     }
 
 }

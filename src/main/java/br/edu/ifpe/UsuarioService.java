@@ -1,5 +1,6 @@
 package br.edu.ifpe;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class UsuarioService {
@@ -11,27 +12,25 @@ public class UsuarioService {
     }
 
     public void cadastrar(Usuario usuario) {
-
         this.usuarioReporitorio.inserir(usuario);
     }
 
     public void login(String email, String senha) {
 
-       if (email == null || !email.contains("@")) {
-            throw new RuntimeException("e-mail inválido");
+        if (email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("e-mail inválido");
         }
 
         Optional<Usuario> usuarioOptional = usuarioReporitorio.buscarPorEmail(email);
 
         if (usuarioOptional.isEmpty()) {
-            throw new RuntimeException("Login incorreto, tente novamente");
+            throw new NoSuchElementException("Login incorreto, tente novamente");
         }
 
         Usuario usuario = usuarioOptional.get();
 
         if (!usuario.getSenha().equals(senha)) {
-            throw new RuntimeException("Senha inválida, tente novamente");
+            throw new IllegalArgumentException("Senha inválida, tente novamente");
         }
     }
-
 }

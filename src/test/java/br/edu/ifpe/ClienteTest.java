@@ -64,8 +64,8 @@ public class ClienteTest {
         when(clienteRepositorio.buscarPorCPF("144.657.893-67"))
                 .thenReturn(Optional.of(cliente));
 
-        RuntimeException exception = assertThrows(
-                RuntimeException.class,
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
                 () -> clienteService.cadastrar(cliente));
 
         assertEquals("CPF já cadastrado!", exception.getMessage());
@@ -79,8 +79,8 @@ public class ClienteTest {
 
         this.clienteService.atualizar(this.cliente);
 
-        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
-        verify(clienteRepositorio, times(1)).atualizar(cliente);
+        verify(this.clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(this.clienteRepositorio, times(1)).atualizar(cliente);
     }
 
     @Test
@@ -95,8 +95,8 @@ public class ClienteTest {
 
         assertEquals("Cliente não encontrado!", exception.getMessage());
 
-        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
-        verify(clienteRepositorio, times(0)).atualizar(cliente);
+        verify(this.clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(this.clienteRepositorio, times(0)).atualizar(cliente);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class ClienteTest {
 
         clienteService.login("rebeka@gmail.com", "123456@f");
 
-        verify(clienteRepositorio, times(1))
+        verify(this.clienteRepositorio, times(1))
                 .buscarPorEmail("rebeka@gmail.com");
     }
 
@@ -119,8 +119,8 @@ public class ClienteTest {
 
         clienteService.cadastrarDependente(cliente, 1);
 
-        verify(clienteRepositorio, times(1)).buscarPorCodigo(1);
-        verify(clienteRepositorio, times(1)).inserir(cliente);
+        verify(this.clienteRepositorio, times(1)).buscarPorCodigo(1);
+        verify(this.clienteRepositorio, times(1)).inserir(cliente);
     }
 
     @Test
@@ -130,10 +130,10 @@ public class ClienteTest {
 
         this.clienteService.cadastrar(this.cliente);
 
-        verify(clienteRepositorio, times(1))
+        verify(this.clienteRepositorio, times(1))
                 .buscarPorCPF("144.657.893-67");
 
-        verify(clienteRepositorio, times(1))
+        verify(this.clienteRepositorio, times(1))
                 .inserir(cliente);
     }
 
@@ -145,10 +145,10 @@ public class ClienteTest {
 
         clienteService.cadastrarPlanoSaude(33, plano);
 
-        verify(clienteRepositorio, times(1))
+        verify(this.clienteRepositorio, times(1))
                 .buscarPorCodigo(33);
 
-        verify(clienteRepositorio, times(1))
+        verify(this.clienteRepositorio, times(1))
                 .atualizar(cliente);
     }
 
@@ -169,8 +169,8 @@ public class ClienteTest {
 
         assertEquals("Plano de saúde vencido!", exception.getMessage());
 
-        verify(clienteRepositorio, times(1)).buscarPorCodigo(33);
-        verify(clienteRepositorio, times(0)).atualizar(cliente);
+        verify(this.clienteRepositorio, times(1)).buscarPorCodigo(33);
+        verify(this.clienteRepositorio, times(0)).atualizar(cliente);
     }
 
     @Test
@@ -192,10 +192,10 @@ public class ClienteTest {
         clienteService.cadastrarPlanoSaude(33, plano1);
         clienteService.cadastrarPlanoSaude(33, plano2);
 
-        verify(clienteRepositorio, times(2))
+        verify(this.clienteRepositorio, times(2))
                 .buscarPorCodigo(33);
 
-        verify(clienteRepositorio, times(2))
+        verify(this.clienteRepositorio, times(2))
                 .atualizar(cliente);
     }
 
