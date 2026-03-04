@@ -7,6 +7,15 @@ public class Atendimento {
     private String tipo;
     private String medico;
     private String acompanhante;
+    private Prontuario prontuario;
+
+    public Prontuario getProntuario() {
+        return prontuario;
+    }
+
+    public void setProntuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
+    }
 
     public String getTipo() {
         return tipo;

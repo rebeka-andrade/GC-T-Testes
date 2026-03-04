@@ -30,4 +30,15 @@ public class AtendimentoService {
 
         atendimentoRepositorio.salvar(atendimento);
     }
+
+    public void registrarProntuario(Atendimento atendimento,
+                                 String prescricao,
+                                 String medicamentos) {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setPrescricao(prescricao);
+        prontuario.setMedicamentos(medicamentos);
+
+        atendimento.setProntuario(prontuario);
+    }
 }
