@@ -51,7 +51,8 @@ public class ProntuarioService {
 
         FinanceiroService financeiro = new FinanceiroService();
 
-        return financeiro.cobrarPlano();
+        double total = 100.0; 
+        return financeiro.cobrarPlano(total);
     }
 
     public String realizarAtendimentoEmergencial(Prontuario prontuario) {
@@ -62,7 +63,8 @@ public class ProntuarioService {
 
         FinanceiroService financeiro = new FinanceiroService();
 
-        return financeiro.cobrarPlano();
+       double total = 200.0; 
+       return financeiro.cobrarPlano(total);
     }
 
 }
