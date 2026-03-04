@@ -111,4 +111,25 @@ public class AtendimentoServiceTest {
         assertEquals("Dipirona",
                 atendimento.getProntuario().getMedicamentos());
     }
+
+    @Test
+    public void testeRegistrarProntuarioCompletoComSucesso() {
+
+        atendimentoService.registrarProntuarioCompleto(
+                atendimento,
+                "Hipertensão",
+                "Diabetes",
+                "Dor no peito",
+                "Pressão arterial elevada",
+                "20/03/2026"
+        );
+
+        Prontuario prontuario = atendimento.getProntuario();
+
+        assertEquals("Hipertensão", prontuario.getAntecedentesClinicos());
+        assertEquals("Diabetes", prontuario.getAntecedentesFamiliares());
+        assertEquals("Dor no peito", prontuario.getSintomas());
+        assertEquals("Pressão arterial elevada", prontuario.getDiagnostico());
+        assertEquals("20/03/2026", prontuario.getDataAtendimento());
+    }
 }
