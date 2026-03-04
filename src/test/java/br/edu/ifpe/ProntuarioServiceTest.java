@@ -52,5 +52,20 @@ public class ProntuarioServiceTest {
         assertNotNull(sugestao);
         assertTrue(sugestao.contains("Sugestão DorAI"));
     }
+
+    @Test
+    void deveExecutarProcessamentoDeProntuarioViaDorAI() {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setSintomas("Dor no peito");
+        prontuario.setDiagnostico("Pressão elevada");
+
+        ProntuarioService service = new ProntuarioService();
+
+        String resultado = service.processarProntuario(prontuario);
+
+        assertNotNull(resultado);
+        assertTrue(resultado.contains("Processamento DorAI concluído"));
+    }
 }
 
