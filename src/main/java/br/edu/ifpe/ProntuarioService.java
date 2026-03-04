@@ -35,4 +35,11 @@ public class ProntuarioService {
 
         return submeterParaDorAI(prontuario);
     }
+
+    public String processarProntuario(Prontuario prontuario) {
+
+        DorAIService dorAI = new DorAIService();
+
+        return dorAI.processar(prontuario);
+    }
 }
