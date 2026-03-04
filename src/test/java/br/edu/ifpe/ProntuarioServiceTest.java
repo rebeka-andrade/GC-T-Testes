@@ -67,5 +67,20 @@ public class ProntuarioServiceTest {
         assertNotNull(resultado);
         assertTrue(resultado.contains("Processamento DorAI concluído"));
     }
+
+    @Test
+    void deveRealizarAtendimentoAmbulatorialECobrarPlano() {
+
+        Prontuario prontuario = new Prontuario();
+        prontuario.setSintomas("Dor no peito");
+        prontuario.setDiagnostico("Pressão elevada");
+
+        ProntuarioService service = new ProntuarioService();
+
+        String resultado = service.realizarAtendimentoAmbulatorial(prontuario);
+
+        assertNotNull(resultado);
+        assertTrue(resultado.contains("Plano de saúde cobrado"));
+    }
 }
 
